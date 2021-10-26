@@ -1,0 +1,21 @@
+﻿body {
+    background-color: #E5E5E5;
+}
+
+.dx-dshd-form-new-disallowed-message {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    transform: translateY(-50%);
+}
+
+.content {            
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    bottom: 0;
+    right: 0;
+    overflow: hidden;
+}

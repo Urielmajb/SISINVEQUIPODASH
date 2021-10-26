@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dashboard>
+  <Title Text="Equipos Tecnologicos" />
+  <DataSources>
+    <SqlDataSource Name="tblEquipo" ComponentName="sqlDataSource1">
+      <Connection Name="msSqlConnection" FromAppConfig="true" />
+      <Query Type="SelectQuery" Name="tblEquipo">
+        <Tables>
+          <Table Name="tblEquipo" />
+          <Table Name="tblDispositivo" />
+          <Relation Type="Inner" Parent="tblEquipo" Nested="tblDispositivo">
+            <KeyColumn Parent="ID_dispo" Nested="ID_dispo" />
+          </Relation>
+        </Tables>
+        <Columns>
+          <Column Table="tblDispositivo" Name="Dispositivo" />
+          <Column Table="tblEquipo" Name="NOM_EQUIPO" />
+          <Column Table="tblEquipo" Name="CANTIDAD" />
+          <Column Table="tblEquipo" Name="ACTIVO" />
+        </Columns>
+      </Query>
+      <ConnectionOptions CloseConnection="true" />
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <Grid ComponentName="gridDashboardItem1" Name="Equipos Informaticos En Existencia" DataSource="sqlDataSource1" DataMember="tblEquipo">
+      <DataItems>
+        <Dimension DataMember="NOM_EQUIPO" DefaultId="DataItem1" />
+        <Dimension DataMember="ACTIVO" DefaultId="DataItem2" />
+        <Measure DataMember="CANTIDAD" DefaultId="DataItem3" />
+      </DataItems>
+      <GridColumns>
+        <GridDimensionColumn>
+          <Dimension DefaultId="DataItem1" />
+        </GridDimensionColumn>
+        <GridDimensionColumn>
+          <Dimension DefaultId="DataItem2" />
+        </GridDimensionColumn>
+        <GridMeasureColumn>
+          <Measure DefaultId="DataItem3" />
+        </GridMeasureColumn>
+      </GridColumns>
+      <GridOptions />
+    </Grid>
+    <ComboBox ComponentName="comboBoxDashboardItem1" Name="Seleccione el Dispositivo " DataSource="sqlDataSource1" DataMember="tblEquipo">
+      <DataItems>
+        <Dimension DataMember="Dispositivo" DefaultId="DataItem0" />
+      </DataItems>
+      <FilterDimensions>
+        <Dimension DefaultId="DataItem0" />
+      </FilterDimensions>
+    </ComboBox>
+    <Chart ComponentName="chartDashboardItem1" Name="Gráfico Equipo x Cantidad" DataSource="sqlDataSource1" DataMember="tblEquipo">
+      <DataItems>
+        <Dimension DataMember="CANTIDAD" DefaultId="DataItem1">
+          <NumericFormat FormatType="Number" />
+        </Dimension>
+        <Measure DataMember="CANTIDAD" DefaultId="DataItem0" />
+        <Dimension DataMember="NOM_EQUIPO" DefaultId="DataItem2" />
+      </DataItems>
+      <SeriesDimensions>
+        <SeriesDimension DefaultId="DataItem1" />
+      </SeriesDimensions>
+      <Arguments>
+        <Argument DefaultId="DataItem2" />
+      </Arguments>
+      <Panes>
+        <Pane Name="Panel 1">
+          <Series>
+            <Simple SeriesType="Point">
+              <Value DefaultId="DataItem0" />
+            </Simple>
+          </Series>
+        </Pane>
+      </Panes>
+    </Chart>
+  </Items>
+  <LayoutTree>
+    <LayoutGroup>
+      <LayoutGroup Orientation="Vertical">
+        <LayoutItem DashboardItem="comboBoxDashboardItem1" />
+        <LayoutGroup>
+          <LayoutItem DashboardItem="gridDashboardItem1" />
+          <LayoutItem DashboardItem="chartDashboardItem1" />
+        </LayoutGroup>
+      </LayoutGroup>
+    </LayoutGroup>
+  </LayoutTree>
+</Dashboard>

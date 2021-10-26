@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dashboard>
+  <Title Text="Prestamos de Equipos" />
+  <DataSources>
+    <SqlDataSource Name="tblPersonas" ComponentName="sqlDataSource1">
+      <Connection Name="msSqlConnection" FromAppConfig="true" />
+      <Query Type="SelectQuery" Name="tblPersonas">
+        <Tables>
+          <Table Name="tblPersonas" />
+          <Table Name="tblReunion" />
+          <Table Name="tblEquipo" />
+          <Relation Type="Inner" Parent="tblReunion" Nested="tblPersonas">
+            <KeyColumn Parent="IDPersona" Nested="IDPersona" />
+          </Relation>
+          <Relation Type="Inner" Parent="tblReunion" Nested="tblEquipo">
+            <KeyColumn Parent="ID_Equipo" Nested="ID_Equipo" />
+          </Relation>
+        </Tables>
+        <Columns>
+          <Column Table="tblPersonas" Name="Nombre" />
+          <Column Table="tblPersonas" Name="Apellido" />
+          <Column Table="tblPersonas" Name="Cargo" />
+          <Column Table="tblPersonas" Name="Area" />
+          <Column Table="tblPersonas" Name="Fechaprestamo" />
+          <Column Table="tblPersonas" Name="FechaEntrega" />
+          <Column Table="tblReunion" Name="ID_Equipo" />
+          <Column Table="tblEquipo" Name="NOM_EQUIPO" />
+        </Columns>
+      </Query>
+      <ConnectionOptions CloseConnection="true" />
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <DateFilter ComponentName="dateFilterDashboardItem1" Name="Fecha de Prestamo" DataSource="sqlDataSource1" DataMember="tblPersonas">
+      <DataItems>
+        <Dimension DataMember="FechaEntrega" DateTimeGroupInterval="DayMonthYear" DefaultId="DataItem0" />
+        <Dimension DataMember="Fechaprestamo" DefaultId="DataItem1" />
+      </DataItems>
+      <HiddenDimensions>
+        <Dimension DefaultId="DataItem1" />
+      </HiddenDimensions>
+      <Dimension DefaultId="DataItem0" />
+    </DateFilter>
+    <Grid ComponentName="gridDashboardItem1" Name="Usuarios que se hicieron prestamos de equipos" DataSource="sqlDataSource1" DataMember="tblPersonas">
+      <DataItems>
+        <Dimension DataMember="Nombre" DefaultId="DataItem0" />
+        <Dimension DataMember="Cargo" DefaultId="DataItem1" />
+        <Dimension DataMember="Area" DefaultId="DataItem2" />
+        <Dimension DataMember="NOM_EQUIPO" DefaultId="DataItem3" />
+      </DataItems>
+      <GridColumns>
+        <GridDimensionColumn>
+          <Dimension DefaultId="DataItem0" />
+        </GridDimensionColumn>
+        <GridDimensionColumn>
+          <Dimension DefaultId="DataItem1" />
+        </GridDimensionColumn>
+        <GridDimensionColumn>
+          <Dimension DefaultId="DataItem2" />
+        </GridDimensionColumn>
+        <GridDimensionColumn>
+          <Dimension DefaultId="DataItem3" />
+        </GridDimensionColumn>
+      </GridColumns>
+      <GridOptions />
+    </Grid>
+  </Items>
+  <LayoutTree>
+    <LayoutGroup>
+      <LayoutGroup Orientation="Vertical">
+        <LayoutItem DashboardItem="dateFilterDashboardItem1" />
+        <LayoutItem DashboardItem="gridDashboardItem1" />
+      </LayoutGroup>
+    </LayoutGroup>
+  </LayoutTree>
+</Dashboard>

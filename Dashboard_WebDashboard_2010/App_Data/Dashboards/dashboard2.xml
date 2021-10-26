@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dashboard>
+  <Title Text="Reuniones" />
+  <DataSources>
+    <SqlDataSource Name="tblEquipo 1" ComponentName="sqlDataSource1">
+      <Connection Name="msSqlConnection" FromAppConfig="true" />
+      <Query Type="SelectQuery" Name="Reuniones">
+        <Tables>
+          <Table Name="tblEquipo" />
+          <Table Name="tblPersonas" />
+          <Table Name="tblReunion" />
+          <Table Name="tblTipoReunion" />
+          <Relation Type="Inner" Parent="tblReunion" Nested="tblEquipo">
+            <KeyColumn Parent="ID_Equipo" Nested="ID_Equipo" />
+          </Relation>
+          <Relation Type="Inner" Parent="tblReunion" Nested="tblPersonas">
+            <KeyColumn Parent="IDPersona" Nested="IDPersona" />
+          </Relation>
+          <Relation Type="Inner" Parent="tblReunion" Nested="tblTipoReunion">
+            <KeyColumn Parent="ID_Tipo" Nested="ID_Tipo" />
+          </Relation>
+        </Tables>
+        <Columns>
+          <Column Table="tblEquipo" Name="NOM_EQUIPO" />
+          <Column Table="tblPersonas" Name="Nombre" />
+          <Column Table="tblPersonas" Name="Apellido" />
+          <Column Table="tblReunion" Name="NOM_REUNION" />
+          <Column Table="tblTipoReunion" Name="TipoReunion" />
+          <Column Table="tblReunion" Name="hora" />
+          <Column Table="tblReunion" Name="fecharealizada" />
+          <Column Table="tblReunion" Name="IDReunion" />
+        </Columns>
+      </Query>
+      <ConnectionOptions CloseConnection="true" />
+    </SqlDataSource>
+    <SqlDataSource Name="TipoReunion" ComponentName="sqlDataSource2">
+      <Connection Name="msSqlConnection" FromAppConfig="true" />
+      <Query Type="SelectQuery" Name="TipoReunion">
+        <Tables>
+          <Table Name="tblTipoReunion" />
+          <Table Name="tblReunion" />
+          <Relation Type="Inner" Parent="tblReunion" Nested="tblTipoReunion">
+            <KeyColumn Parent="ID_Tipo" Nested="ID_Tipo" />
+          </Relation>
+        </Tables>
+        <Columns>
+          <Column Table="tblTipoReunion" Name="TipoReunion" />
+          <Column Table="tblReunion" Name="NOM_REUNION" />
+        </Columns>
+      </Query>
+      <ConnectionOptions CloseConnection="true" />
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <ComboBox ComponentName="comboBoxDashboardItem1" Name="Seleccione el Tipo de Reunion" DataSource="sqlDataSource1" DataMember="Reuniones" EnableSearch="true">
+      <DataItems>
+        <Dimension DataMember="TipoReunion" DefaultId="DataItem0" />
+      </DataItems>
+      <FilterDimensions>
+        <Dimension DefaultId="DataItem0" />
+      </FilterDimensions>
+    </ComboBox>
+    <Grid ComponentName="gridDashboardItem1" Name="Reuniones Realizadas" DataSource="sqlDataSource1" DataMember="Reuniones">
+      <DataItems>
+        <Dimension DataMember="NOM_REUNION" DefaultId="DataItem0" />
+        <Dimension DataMember="Nombre" DefaultId="DataItem1" />
+        <Dimension DataMember="NOM_EQUIPO" DefaultId="DataItem2" />
+        <Dimension DataMember="hora" DefaultId="DataItem3" />
+      </DataItems>
+      <GridColumns>
+        <GridDimensionColumn>
+          <Dimension DefaultId="DataItem0" />
+        </GridDimensionColumn>
+        <GridDimensionColumn>
+          <Dimension DefaultId="DataItem1" />
+        </GridDimensionColumn>
+        <GridDimensionColumn>
+          <Dimension DefaultId="DataItem2" />
+        </GridDimensionColumn>
+        <GridDimensionColumn>
+          <Dimension DefaultId="DataItem3" />
+        </GridDimensionColumn>
+      </GridColumns>
+      <GridOptions />
+    </Grid>
+    <DateFilter ComponentName="dateFilterDashboardItem1" Name="Fecha Inicio - Fecha Fin" DataSource="sqlDataSource1" DataMember="Reuniones">
+      <DataItems>
+        <Dimension DataMember="fecharealizada" DateTimeGroupInterval="DayMonthYear" DefaultId="DataItem0" />
+      </DataItems>
+      <Dimension DefaultId="DataItem0" />
+    </DateFilter>
+  </Items>
+  <LayoutTree>
+    <LayoutGroup Orientation="Vertical">
+      <LayoutGroup Orientation="Vertical">
+        <LayoutGroup>
+          <LayoutItem DashboardItem="comboBoxDashboardItem1" />
+          <LayoutItem DashboardItem="dateFilterDashboardItem1" />
+        </LayoutGroup>
+        <LayoutItem DashboardItem="gridDashboardItem1" />
+      </LayoutGroup>
+    </LayoutGroup>
+  </LayoutTree>
+</Dashboard>

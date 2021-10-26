@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dashboard>
+  <Title Text="Datos Personales " />
+  <DataSources>
+    <SqlDataSource Name="tblPersonas 1" ComponentName="sqlDataSource1">
+      <Connection Name="msSqlConnection" FromAppConfig="true" />
+      <Query Type="SelectQuery" Name="tblPersonasDatos">
+        <Tables>
+          <Table Name="tblPersonas" />
+        </Tables>
+        <Columns>
+          <Column Table="tblPersonas" Name="Nombre" />
+          <Column Table="tblPersonas" Name="Apellido" />
+          <Column Table="tblPersonas" Name="Cargo" />
+          <Column Table="tblPersonas" Name="Area" />
+          <Column Table="tblPersonas" Name="IDPersona" />
+          <Column Table="tblPersonas" Name="ACTIVO" />
+        </Columns>
+      </Query>
+      <ConnectionOptions CloseConnection="true" />
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <Card ComponentName="cardDashboardItem1" Name="Fichas Datos Personales" DataSource="sqlDataSource1" DataMember="tblPersonasDatos" ContentArrangementMode="FixedColumnCount">
+      <DataItems>
+        <Measure DataMember="IDPersona" SummaryType="CountDistinct" DefaultId="DataItem0" />
+        <Dimension DataMember="Nombre" DefaultId="DataItem1" />
+        <Dimension DataMember="Apellido" DefaultId="DataItem2" />
+        <Dimension DataMember="Cargo" DefaultId="DataItem3" />
+        <Dimension DataMember="Area" DefaultId="DataItem4" />
+      </DataItems>
+      <SeriesDimensions>
+        <SeriesDimension DefaultId="DataItem1" />
+        <SeriesDimension DefaultId="DataItem2" />
+        <SeriesDimension DefaultId="DataItem3" />
+        <SeriesDimension DefaultId="DataItem4" />
+      </SeriesDimensions>
+      <Card>
+        <ActualValue DefaultId="DataItem0" />
+        <AbsoluteVariationNumericFormat />
+        <PercentVariationNumericFormat />
+        <PercentOfTargetNumericFormat />
+        <LayoutTemplate Type="Stretched">
+          <TopValue Visible="true" ValueType="ActualValue" DimensionIndex="0" />
+          <MainValue Visible="true" ValueType="Title" DimensionIndex="0" />
+          <SubValue Visible="true" ValueType="Subtitle" DimensionIndex="0" />
+          <BottomValue1 Visible="true" ValueType="PercentVariation" DimensionIndex="0" />
+          <BottomValue2 Visible="true" ValueType="AbsoluteVariation" DimensionIndex="0" />
+          <DeltaIndicator Visible="true" />
+          <Sparkline Visible="true" />
+        </LayoutTemplate>
+      </Card>
+    </Card>
+  </Items>
+  <LayoutTree>
+    <LayoutGroup>
+      <LayoutItem DashboardItem="cardDashboardItem1" />
+    </LayoutGroup>
+  </LayoutTree>
+</Dashboard>

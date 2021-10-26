@@ -1,0 +1,51 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="Dashboard_WebDashboard_2010.Site" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>    
+    <link href="Scripts/styles.css" rel="stylesheet" />
+    <script src="Scripts/scripts.js"></script>
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+
+     <script type="text/html" id="dx-dshd-form-new-disallowed">
+        <div class="dx-dshd-form-new-disallowed-message">
+            A corresponding data provider is not installed.
+            <br/>
+            To create a new Dashboard, do one of the following:
+            <br/>
+            <br/>
+            Install SQL Server Express or SQL Server Express LocalDB on your computer.
+            <br/>
+            or
+            <br/>
+            Specify the server name within connection strings in the Web.config file and run the demo again.
+        </div>
+    </script>
+    <form id="form1" runat="server">
+        <div style="position:absolute;top:0;right:0;bottom:0;left:0;">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+
+     <!--          Custom Item Extensions          -->
+    
+    <script src="Content/d3-funnel/d3.v4.min.js"></script>
+    <script src="Content/d3-funnel/d3-funnel.min.js"></script>
+    <script src="Content/d3-funnel/funnel.min.js"></script>
+    <script src="Content/online-map-extension.min.js"></script>
+    <script src="Content/webpage-extension.min.js"></script>
+    <!--          Custom API                      -->
+    <script src="Content/SaveAsExtension/extension.js"></script>
+    <script src="Content/SaveAsExtension/icons.js"></script>
+    <script src="Content/SaveAsExtension/popup.js"></script>
+    <!--               -->
+</body>
+</html>
+

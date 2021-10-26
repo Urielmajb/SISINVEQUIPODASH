@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="olapConnection-Web.config Connection String" description="olapConnection Cadena de conexión que usa la aplicación en web.config para obtener acceso a la base de datos." defaultValue="Data Source=http://demos.devexpress.com/Services/OLAP/msmdpump.dll;Initial Catalog=Adventure Works DW Standard Edition;Timeout=1200;Cube Name=Adventure Works;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Posgrado\\Desktop\\dashbord\\dashboard\\dashboard\\Dashboard_WebDashboard_2010\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='olapConnection']/@connectionString" />
+  </parameter>
+</parameters>

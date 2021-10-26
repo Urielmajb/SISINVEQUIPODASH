@@ -1,0 +1,173 @@
+﻿/* The styles for the elements */
+body
+{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 90%;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+}
+
+/* The style for the page division */
+h1
+{
+    font-size: 24pt;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    color: #0000FF;
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+h2
+{
+    font-size: 15pt;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: normal;
+    font-style: italic;
+    color: #808080;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+
+
+
+h3
+{
+    font-size: 13pt;
+    color: #0000FF;
+    margin-bottom: 7px;
+}
+p
+{
+    margin-top: 0;
+    margin-bottom: 7px;
+}
+
+
+
+/* VerticalBarChart */
+.verticalBarChartHeader {
+    border-top: 2px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+    width: 100%;
+}
+
+    .verticalBarChartHeader > div {
+        display: inline-block;
+        padding: 5px 25px 5px 0px;
+    }
+
+    .verticalBarChartHeader .dateSelectorHolder {
+        padding-right: 10px;
+        padding-top: 15px;
+        float: right;
+    }
+
+.verticalBarChartTitle {
+    font-weight: 400;
+    padding: 5px 0px;
+}
+
+.verticalBarChartHeaderTitle,
+.verticalBarChartTitle {
+    color: #828282;
+    display: inline-block;
+}
+
+.verticalChart {
+    padding: 5px 0px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#page {
+    border: thin solid #0000FF;
+    width: 900px;
+    margin: 0 auto;
+    background-color: White;
+   
+}
+
+#footer {
+    
+    border: thin solid #0000FF;
+    width: 900px;
+    margin: 0 auto; 
+    background-color: White;
+    text-align:center;
+
+}
+
+
+
+#links
+{
+    padding-top: 2px;
+    padding-bottom: 2px;
+    border-top: 2px solid #0000FF;
+    border-bottom: 2px solid #0000FF;
+    margin-bottom: 20px;
+}
+#Menu1
+{
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+#map
+{
+    font-family: Verdana, Sans-Serif;
+    font-size: 80%;
+    color: #284E98;
+    padding-top: 7px;
+    padding-bottom: 10px;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+.validator
+{
+    color: Red;
+}
+.hyperlink
+{
+    margin-right: 10px;
+}
+
+.loginDisplay {
+    font-size: 10pt;
+    display: block;
+    text-align: right;
+    padding: 2px;
+    color: #0000FF;
+}
+
+.header
+{
+    position: relative;
+    margin: 0px;
+    padding: 0px;
+    background: #4b6c9e;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+}
+
